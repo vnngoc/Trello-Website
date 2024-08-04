@@ -1,4 +1,4 @@
-Chuẩn các phiên bản dưới đây để bắt đầu học: (Semantic Versioning)
+Chuẩn các phiên bản dưới đây để bắt đầu:
 
 ```
 * nodejs = v18.16.0
