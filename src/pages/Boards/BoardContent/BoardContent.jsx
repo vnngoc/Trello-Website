@@ -14,7 +14,7 @@ import {
     closestCorners
 } from '@dnd-kit/core'
 import { arrayMove } from '@dnd-kit/sortable'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { cloneDeep } from 'lodash'
 
 import Column from './ListColumns/Column/Column'
@@ -267,13 +267,20 @@ function BoardContent({ board }) {
             styles: { active: { opacity: '0.5' } }
         })
     }
+    // args = arguments = các đối số, tham số
+    const collisionDetectionStrategy = useCallback((args) => {
+
+    }, [])
 
     return (
         <DndContext
             sensors={sensors}
-            // Thuật toán phát hiện va chạm 
+            // Thuật toán phát hiện va chạm
+            // Nếu chỉ dùng ClosetConers sẽ có bug Flickering.
             //https://docs.dndkit.com/api-documentation/context-provider/collision-detection-algorithms
-            collisionDetection={closestCorners}
+            // collisionDetection={closestCorners}
+            collisionDetection={collisionDetectionStrategy}
+
 
             onDragStart={handleDragStart}
             onDragOver={handleDragOver}
